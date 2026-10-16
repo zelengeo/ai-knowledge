@@ -27,7 +27,7 @@ The item must touch a topic listed under `topics` in `sources.yaml`. Off-topic: 
 
 Assign the tier of the best source the item cites, not of the item itself.
 
-- `T1 primary`: official docs, changelog, source code, spec, or first-party API behaviour observed directly.
+- `T1 primary`: official docs, changelog, source code, spec, or first-party API behaviour observed directly. The URL must be on the vendor's own domain or in its GitHub organisation; a page that says it is official is not T1 on its say-so.
 - `T2 reproduced`: a practitioner write-up with a procedure that was run and its outcome stated.
 - `T3 reported`: results without enough method to reproduce.
 - `T4 hearsay`: social posts, aggregator summaries, "I heard".

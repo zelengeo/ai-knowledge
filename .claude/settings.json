@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "deny": [
+      "WebFetch",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(sh *)",
+      "Bash(bash *)",
+      "Bash(brew *)",
+      "Bash(apt *)",
+      "Bash(apt-get *)",
+      "Bash(choco *)",
+      "Bash(winget *)",
+      "Bash(pip *)",
+      "Bash(pip3 *)",
+      "Bash(npm install *)",
+      "Bash(npm i *)",
+      "Bash(npx *)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm dlx *)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git rebase *)",
+      "Bash(git filter-branch *)",
+      "PowerShell(Invoke-WebRequest *)",
+      "PowerShell(Invoke-RestMethod *)",
+      "PowerShell(Invoke-Expression *)",
+      "PowerShell(iex *)",
+      "PowerShell(Start-Process *)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
+  }
+}

@@ -8,6 +8,7 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } fr
 import { dirname, join } from "node:path";
 import { XMLParser } from "fast-xml-parser";
 import { parse as parseYaml } from "yaml";
+import { sanitize, scan, type Flag } from "./lib/untrusted.ts";
 
 const ROOT = join(import.meta.dirname, "..");
 const SEEN = join(ROOT, "state", "seen.jsonl");
@@ -27,6 +28,7 @@ type Item = {
   published: string;
   summary: string;
   fetched: string;
+  flags: Flag[];
 };
 
 const args = process.argv.slice(2);
@@ -54,7 +56,13 @@ function text(value: unknown): string {
 }
 
 function strip(html: string): string {
-  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 500);
+  return sanitize(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()).text.slice(0, 500);
+}
+
+// Title and summary are untrusted text; flag instruction-like phrases so the
+// triage step and the reviewer see them before reading the page.
+function flagged(item: Omit<Item, "flags">): Item {
+  return { ...item, title: sanitize(item.title).text, flags: scan(`${item.title}\n${item.summary}`) };
 }
 
 function iso(value: string): string {
@@ -84,7 +92,7 @@ function parseFeed(sourceId: string, body: string): Item[] {
   if (doc.rss) {
     for (const entry of asArray<any>(doc.rss.channel?.item)) {
       const url = text(entry.link);
-      items.push({
+      items.push(flagged({
         id: `${sourceId}:${text(entry.guid) || url}`,
         source: sourceId,
         title: text(entry.title),
@@ -92,14 +100,14 @@ function parseFeed(sourceId: string, body: string): Item[] {
         published: iso(text(entry.pubDate)),
         summary: strip(text(entry.description)),
         fetched: now,
-      });
+      }));
     }
   } else if (doc.feed) {
     for (const entry of asArray<any>(doc.feed.entry)) {
       const links = asArray<any>(entry.link);
       const alternate = links.find((l) => !l["@_rel"] || l["@_rel"] === "alternate") ?? links[0];
       const url = alternate?.["@_href"] ?? "";
-      items.push({
+      items.push(flagged({
         id: `${sourceId}:${text(entry.id) || url}`,
         source: sourceId,
         title: text(entry.title),
@@ -107,7 +115,7 @@ function parseFeed(sourceId: string, body: string): Item[] {
         published: iso(text(entry.published ?? entry.updated)),
         summary: strip(text(entry.summary ?? entry.content)),
         fetched: now,
-      });
+      }));
     }
   } else {
     throw new Error("neither RSS nor Atom");
@@ -126,7 +134,7 @@ async function fetchHn(source: HnSource): Promise<Item[]> {
     url.searchParams.set("hitsPerPage", "50");
     const data = JSON.parse(await get(url.toString()));
     for (const hit of data.hits ?? []) {
-      items.push({
+      items.push(flagged({
         id: `${source.id}:${hit.objectID}`,
         source: source.id,
         title: hit.title ?? "",
@@ -134,7 +142,7 @@ async function fetchHn(source: HnSource): Promise<Item[]> {
         published: iso(hit.created_at),
         summary: strip(`${hit.points} points, ${hit.num_comments} comments, matched "${query}". ${hit.story_text ?? ""}`),
         fetched: now,
-      });
+      }));
     }
   }
   return items;
@@ -175,6 +183,13 @@ writeFileSync(PENDING, JSON.stringify(pending, null, 2) + "\n");
 
 console.log(`${fresh.length} new items, ${pending.length} pending triage (lookback ${lookbackDays}d)`);
 for (const [id, line] of Object.entries(summary)) console.log(`  ${id}: ${line}`);
+const flaggedPending = pending.filter((item) => (item.flags ?? []).length > 0);
+if (flaggedPending.length > 0) {
+  console.log(`  flagged for review: ${flaggedPending.length}`);
+  for (const item of flaggedPending) console.log(`    ${item.id} [${item.flags.join(",")}] ${item.title.slice(0, 80)}`);
+}
 
+// process.exit at module top level trips a libuv assertion on Windows with
+// Node 24; setting exitCode lets the loop drain instead.
 const allFailed = config.sources.every((source) => summary[source.id]?.startsWith("ERROR"));
-process.exit(allFailed ? 1 : 0);
+process.exitCode = allFailed ? 1 : 0;
