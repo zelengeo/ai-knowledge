@@ -13,7 +13,6 @@ A personal, agent-maintained knowledge base of AI-assisted engineering practice:
 - `docs/validation-contract.md`: what "verified" means and who may say it.
 - `docs/daily-job.md`: the procedure the scheduled agent follows.
 - `docs/adr/`: decisions already made. Read before proposing structure changes.
-- `docs/backlog.md`: tickets waiting for the GitHub repo.
 - `scripts/`: deterministic fetchers. No model calls inside.
 
 ## Rules
