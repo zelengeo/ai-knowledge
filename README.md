@@ -19,4 +19,4 @@ On GitHub, or open the folder as an Obsidian vault. Plain markdown links, no plu
 
 ## Status
 
-Scaffolded 2026-10-16. Open work: `docs/backlog.md`.
+Scaffolded 2026-10-16. Open work is in the issues, labelled per `docs/agents/triage-labels.md`.
