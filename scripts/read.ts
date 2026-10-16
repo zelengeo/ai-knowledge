@@ -38,23 +38,30 @@ try {
 // Sites that publish a markdown twin of every page at <path>.md.
 const MARKDOWN_TWIN_HOSTS = new Set(["www.aihero.dev", "aihero.dev"]);
 
-function candidates(u: URL): string[] {
-  const list: string[] = [];
+// Asking for markdown first makes some servers (aihero.dev among them) answer
+// 404 for pages that have no markdown form. So the twin URL asks for markdown
+// and the direct URL asks for HTML first.
+type Candidate = { url: string; accept: string };
+const ACCEPT_MARKDOWN = "text/markdown, text/plain;q=0.9, text/html;q=0.8, */*;q=0.1";
+const ACCEPT_HTML = "text/html, application/xhtml+xml, text/plain;q=0.9, text/markdown;q=0.8, application/json;q=0.5, */*;q=0.1";
+
+function candidates(u: URL): Candidate[] {
+  const list: Candidate[] = [];
   const hasExtension = /\.[a-z0-9]{1,5}$/i.test(u.pathname);
   if (MARKDOWN_TWIN_HOSTS.has(u.hostname) && !hasExtension) {
     const twin = new URL(u.toString());
     twin.pathname = twin.pathname.replace(/\/$/, "") + ".md";
-    list.push(twin.toString());
+    list.push({ url: twin.toString(), accept: ACCEPT_MARKDOWN });
   }
-  list.push(u.toString());
+  list.push({ url: u.toString(), accept: ACCEPT_HTML });
   return list;
 }
 
-async function fetchText(u: string): Promise<{ status: number; type: string; body: string }> {
+async function fetchText(u: string, accept: string): Promise<{ status: number; type: string; body: string }> {
   const res = await fetch(u, {
     headers: {
       "user-agent": "ai-knowledge reader (personal knowledge base; contact via GitHub)",
-      accept: "text/markdown, text/plain;q=0.9, text/html;q=0.8, application/json;q=0.5, */*;q=0.1",
+      accept,
     },
     redirect: "follow",
     signal: AbortSignal.timeout(20_000),
@@ -71,15 +78,15 @@ let used = "";
 let lastError = "";
 for (const candidate of candidates(url)) {
   try {
-    const r = await fetchText(candidate);
+    const r = await fetchText(candidate.url, candidate.accept);
     if (r.status >= 200 && r.status < 300 && r.body.trim().length > 0) {
       result = r;
-      used = candidate;
+      used = candidate.url;
       break;
     }
-    lastError = `${r.status} from ${candidate}`;
+    lastError = `${r.status} from ${candidate.url}`;
   } catch (error) {
-    lastError = `${(error as Error).message} from ${candidate}`;
+    lastError = `${(error as Error).message} from ${candidate.url}`;
   }
 }
 
