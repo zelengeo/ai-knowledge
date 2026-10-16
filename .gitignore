@@ -2,3 +2,5 @@ node_modules/
 inbox/
 .obsidian/
 *.log
+.claude/worktrees/
+.idea/
