@@ -1,0 +1,59 @@
+# The watchlist. Tight on purpose (docs/adr/0002). Every source carries a
+# why line; adding one is a PR with that line filled in. The daily job never
+# edits this file, it proposes in the PR description instead.
+
+lookbackDays: 2
+
+# Relevance gate for triage (docs/rubric.md). An item must touch one of these.
+topics:
+  - coding agents in daily use: Claude Code, Codex CLI, Cursor, and their harnesses
+  - agent skills, AGENTS.md and CLAUDE.md, context engineering
+  - MCP servers and tool use
+  - spec-driven, ticket-driven, and test-driven workflows with agents
+  - evals, verification, and review of agent output
+  - sandboxing and running agents unattended
+  - model releases, only with a changelog or a benchmark that states its method
+
+sources:
+  - id: claude-code-releases
+    kind: atom
+    url: https://github.com/anthropics/claude-code/releases.atom
+    defaultTier: T1
+    why: changelog of the coding agent in daily use
+
+  - id: pocock-skills-releases
+    kind: atom
+    url: https://github.com/mattpocock/skills/releases.atom
+    defaultTier: T1
+    why: upstream of the skills this repo depends on (docs/adr/0005)
+
+  - id: aihero
+    kind: rss
+    url: https://www.aihero.dev/rss.xml
+    defaultTier: T2
+    why: Matt Pocock posts and lessons, the starting corpus; markdown twins at <page>.md
+
+  - id: simonwillison
+    kind: atom
+    url: https://simonwillison.net/atom/everything/
+    defaultTier: T2
+    why: a practitioner who runs what he writes about and links primary sources
+
+  - id: hn
+    kind: hn
+    minPoints: 30
+    queries:
+      - "claude code"
+      - "codex cli"
+      - "coding agent"
+      - "agent skills"
+      - "AGENTS.md"
+      - "MCP server"
+    defaultTier: T4
+    why: lagging indicator with a crowd filter; the points threshold cuts the noise
+
+  - id: lobsters-ai
+    kind: rss
+    url: https://lobste.rs/t/ai.rss
+    defaultTier: T4
+    why: smaller and more technical crowd filter than HN; the tag feed keeps it on topic

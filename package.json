@@ -1,0 +1,13 @@
+{
+  "name": "ai-knowledge",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "fetch": "node scripts/fetch.ts"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.5",
+    "yaml": "^2.8.1"
+  }
+}
