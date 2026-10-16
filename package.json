@@ -4,7 +4,8 @@
   "type": "module",
   "engines": { "node": ">=24" },
   "scripts": {
-    "fetch": "node scripts/fetch.ts"
+    "fetch": "node scripts/fetch.ts",
+    "read": "node scripts/read.ts"
   },
   "dependencies": {
     "fast-xml-parser": "^5.2.5",
