@@ -9,7 +9,7 @@ sources:
 tags: [aihero, pocock-skills, code-review, quality]
 applies_to: [mattpocock-skills@1.3, claude-code@2.x]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-19
 verified_by: agent
 ---
 

@@ -26,3 +26,15 @@
 {"id":"lobsters-ai:https://lobste.rs/s/enjlpn","date":"2026-10-16","verdict":"drop","rule":"off-topic","reason":"Interpretability research; touches no listed topic."}
 {"id":"lobsters-ai:https://lobste.rs/s/plbei0","date":"2026-10-16","verdict":"drop","rule":"off-topic","reason":"Commentary on open-weights branding; touches no listed topic."}
 {"id":"lobsters-ai:https://lobste.rs/s/nsjjo3","date":"2026-10-16","verdict":"drop","rule":"off-topic","reason":"Browser RAG with a small model; not about coding agents or tool use."}
+{"id":"lobsters-ai:https://lobste.rs/s/gtev9y","date":"2026-10-19","verdict":"keep","rule":"K4","tier":"T3","note":"notes/mcp-proxy-guardrails-only-cover-traffic-that-passes-through-them.md","reason":"MCP proxy post-mortem with Codex token-exposure incident and harness limits."}
+{"id":"claude-code-releases:tag:github.com,2008:Repository/937253475/v2.1.303","date":"2026-10-19","verdict":"drop","rule":"D2","reason":"Release notes say only bug fixes and reliability improvements."}
+{"id":"simonwillison:https://simonwillison.net/2026/Oct/18/llm-tools-datasette/","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Plugin dependency fix for LLM; no listed topic."}
+{"id":"simonwillison:https://simonwillison.net/2026/Oct/18/llm-echo/","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Debug plugin for the LLM CLI; not about coding agents or tool use."}
+{"id":"simonwillison:https://simonwillison.net/2026/Oct/17/document-currentscript/","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Browser JS trick; no listed topic."}
+{"id":"hn:50152541","date":"2026-10-19","verdict":"drop","rule":"D4","reason":"Show HN project launch for a Redis-compatible database; AI use incidental."}
+{"id":"hn:50148855","date":"2026-10-19","verdict":"keep","rule":"K2","tier":"T1","note":"notes/claude-code-worktree-tmux-flag-and-send-keys-scripting.md","reason":"tmux session, send-keys, and capture-pane procedure for Claude Code, plus the official worktree/tmux flag."}
+{"id":"hn:50140769","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Zelda timeline site."}
+{"id":"hn:50137820","date":"2026-10-19","verdict":"drop","rule":"D3","reason":"Showcase of model output with no reproducible method or benchmark."}
+{"id":"hn:50137950","date":"2026-10-19","verdict":"drop","rule":"D5","reason":"Show HN tool announcement; no method or measurement, page not read beyond summary."}
+{"id":"hn:50145715","date":"2026-10-19","verdict":"drop","rule":"D2","reason":"Show HN MCP server project with no changelog or measurement."}
+{"id":"lobsters-ai:https://lobste.rs/s/7r9dcc","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Time-series foundation models; not coding agents."}

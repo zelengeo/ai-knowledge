@@ -11,7 +11,7 @@ sources:
 tags: [aihero, agents-md, context-engineering, progressive-disclosure]
 applies_to: []
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-19
 verified_by: agent
 ---
 

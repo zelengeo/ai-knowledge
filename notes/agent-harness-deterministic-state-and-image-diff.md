@@ -8,7 +8,7 @@ sources:
 tags: [harness, context-engineering, game-dev, evals, claude-code]
 applies_to: []
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-19
 verified_by: agent
 ---
 
