@@ -12,7 +12,7 @@ sources:
 tags: [aihero, pocock-skills, course, map]
 applies_to: [mattpocock-skills@1.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-19
 verified_by: agent
 ---
 
