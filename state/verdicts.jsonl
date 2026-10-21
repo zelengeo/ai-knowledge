@@ -38,3 +38,4 @@
 {"id":"hn:50137950","date":"2026-10-19","verdict":"drop","rule":"D5","reason":"Show HN tool announcement; no method or measurement, page not read beyond summary."}
 {"id":"hn:50145715","date":"2026-10-19","verdict":"drop","rule":"D2","reason":"Show HN MCP server project with no changelog or measurement."}
 {"id":"lobsters-ai:https://lobste.rs/s/7r9dcc","date":"2026-10-19","verdict":"drop","rule":"off-topic","reason":"Time-series foundation models; not coding agents."}
+{"id":"manual:https://github.com/google-research/harness2","date":"2026-10-20","verdict":"keep","rule":"K1","tier":"T1","note":"notes/harness2-propose-probe-compose-refines-agent-harness-without-ground-truth.md","reason":"User-requested read of google-research/harness2: source code and docs of a harness-optimisation framework; four notes (mechanism, components, edit discipline, rubric leak)."}
