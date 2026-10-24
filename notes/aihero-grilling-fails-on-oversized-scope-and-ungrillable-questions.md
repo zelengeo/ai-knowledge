@@ -9,7 +9,7 @@ sources:
 tags: [aihero, pocock-skills, grilling, context-engineering, planning]
 applies_to: []
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-23
 verified_by: agent
 ---
 
