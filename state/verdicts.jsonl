@@ -65,3 +65,7 @@
 {"id":"lobsters-ai:https://lobste.rs/s/d1snfg","date":"2026-10-23","verdict":"drop","rule":"off-topic","reason":"Text generation research paper; not a coding-agent topic."}
 {"id":"lobsters-ai:https://lobste.rs/s/zu7jjb","date":"2026-10-23","verdict":"drop","rule":"off-topic","reason":"EU data policy news; not on the watchlist topics."}
 {"id":"lobsters-ai:https://lobste.rs/s/urfgc9","date":"2026-10-23","verdict":"drop","rule":"off-topic","reason":"PyTorch autograd malware technique; not about agents or their sandboxes."}
+{"id":"simonwillison:https://simonwillison.net/2026/Oct/26/jason-koebler/","date":"2026-10-26","verdict":"drop","rule":"off-topic","reason":"Quote about ChatGPT sending tech-support users to a news outlet; not about coding agents or any listed topic."}
+{"id":"simonwillison:https://simonwillison.net/2026/Oct/25/seam-cutter/","date":"2026-10-26","verdict":"drop","rule":"off-topic","reason":"An image cropping tool; nothing about agents, skills, MCP, or evals in the summary."}
+{"id":"hn:50242555","date":"2026-10-26","verdict":"drop","rule":"D1","reason":"Essay arguing written intent should outrank code and describing an Ideal State Artifact document shape; no run procedure, no outcome, no primary source."}
+{"id":"hn:50227041","date":"2026-10-26","verdict":"drop","rule":"D2","lead":true,"reason":"Show HN for ADRs4AI: a template repo, VS Code extension and QST/ORRCF record format with one sample record and no measured outcome; the template repo and the versioned deliberation protocol paper are leads for a spec-driven note."}
