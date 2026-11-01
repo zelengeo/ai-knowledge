@@ -12,7 +12,7 @@ sources:
 tags: [aihero, afk, ralph, sandbox, feedback-loops, claude-code]
 applies_to: [claude-code@2.x, docker-desktop@4.50]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-26
 verified_by: agent
 ---
 

@@ -9,7 +9,7 @@ sources:
 tags: [aihero, claude-code, context-engineering, cost]
 applies_to: [claude-code@2.x]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-26
 verified_by: agent
 ---
 

@@ -9,7 +9,7 @@ sources:
 tags: [aihero, planning, tickets, quality]
 applies_to: []
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-26
 verified_by: agent
 ---
 

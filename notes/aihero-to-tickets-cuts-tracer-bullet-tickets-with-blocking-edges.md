@@ -10,7 +10,7 @@ sources:
 tags: [aihero, pocock-skills, tickets, planning, issue-tracker]
 applies_to: [mattpocock-skills@1.3, gh@2.94]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-26
 verified_by: agent
 ---
 
