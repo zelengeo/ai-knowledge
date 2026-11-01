@@ -9,7 +9,7 @@ sources:
 tags: [pocock-skills, engineering, grilling, domain-modeling, planning]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-01
 verified_by: agent
 ---
 
