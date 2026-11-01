@@ -10,7 +10,7 @@ sources:
 tags: [aihero, pocock-skills, context-engineering, handoff]
 applies_to: [mattpocock-skills@1.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-23
 verified_by: agent
 ---
 
