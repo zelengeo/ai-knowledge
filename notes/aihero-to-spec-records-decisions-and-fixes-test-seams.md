@@ -9,7 +9,7 @@ sources:
 tags: [aihero, pocock-skills, spec, planning, issue-tracker]
 applies_to: [mattpocock-skills@1.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-10-26
 verified_by: agent
 ---
 

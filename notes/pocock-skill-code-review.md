@@ -6,10 +6,11 @@ evidence: T1
 sources:
   - https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md
   - https://aihero.dev/skills-code-review
+  - https://github.com/mattpocock/skills/releases/tag/v1.3.2
 tags: [pocock-skills, engineering, code-review, testing]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-01
 verified_by: agent
 ---
 
@@ -34,6 +35,7 @@ verified_by: agent
 - Demonstrated rough edges on the docs page: name clash with Claude Code's built-in `/code-review`; sub-agents re-invoking the skill and fanning out (one report reached 50+ agents); the three-dot diff excludes uncommitted work, so `/implement`'s in-run review can see nothing; findings are aggregated, not re-verified; no convergence across repeated runs.
 - No eval data is published.
 - v1.2.3 removed Claude Code tool names from sub-agent dispatch so the step works on Codex; v1.3.0 reworded its setup precondition as an instruction to the human.
+- v1.3.2 (2026-10-29) runs both sub-agents in the foreground and uses their returned reports, searches the repo for standards files and always hands `CODING_STANDARDS.md` and `CONTRIBUTING.md` to the Standards sub-agent, resolves the issue tracker through the tracker doc instead of a hard-coded path, and tells the dispatch to start each sub-agent with a fresh context window rather than forking the conversation. The fan-out and aggregation rough edges above are not named as fixed.
 
 ## Open questions
 

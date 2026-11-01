@@ -6,10 +6,11 @@ evidence: T1
 sources:
   - https://github.com/mattpocock/skills/blob/main/skills/engineering/ask-matt/SKILL.md
   - https://aihero.dev/skills-ask-matt
+  - https://github.com/mattpocock/skills/releases/tag/v1.3.2
 tags: [pocock-skills, engineering, routing, workflow]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-01
 verified_by: agent
 ---
 
@@ -36,6 +37,7 @@ verified_by: agent
 - The docs page states the router is a secondary source: where it and a `SKILL.md` disagree, the `SKILL.md` wins.
 - No eval data is published for routing accuracy.
 - v1.3.0 added routes for `implement-spec`, `pr` and `retro`; v1.3.1 dropped the stale `diagnosing-bugs` to `improve-codebase-architecture` hand-off.
+- v1.3.2 (2026-10-29) makes the router read a skill's `SKILL.md` before stating what it does or recommending a step be skipped, instead of trusting its one-line summaries (upstream issue 614). The current `SKILL.md` carries that instruction. The harness hiding user-invoked skills from the model's list is still unfixed as of the docs page read on 2026-11-01.
 
 ## Open questions
 
