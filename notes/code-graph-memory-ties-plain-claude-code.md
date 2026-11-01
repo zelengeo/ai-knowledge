@@ -9,7 +9,7 @@ sources:
 tags: [mcp, context-engineering, code-graph, evals, claude-code]
 applies_to: [claude-code@2.1.x]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-01
 verified_by: agent
 ---
 

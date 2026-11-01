@@ -6,10 +6,11 @@ evidence: T1
 sources:
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.309
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.305
+  - https://github.com/anthropics/claude-code/releases/tag/v2.1.316
 tags: [claude-code, sandbox, permissions, hooks, security, unattended, windows]
 applies_to: [claude-code@2.1.x]
 added: 2026-10-23
-last_verified: 2026-10-23
+last_verified: 2026-11-01
 verified_by: agent
 ---
 
@@ -41,12 +42,14 @@ Added in 2.1.305:
 
 - `sandbox.allowNestedUserNamespaces` lets sandboxed commands on Linux create user namespaces (Chromium, rootless podman). The changelog itself says this lets them get around the sandbox's file protections. Leave it off for unattended jobs.
 
+Follow-up in 2.1.316 (2026-10-31): a second PowerShell hook fix, for hooks not blocking on exit code 2 when the command begins with a type cast, `param`, `using` or an attribute. Hooks of that shape were still failing open after 2.1.309. See `claude-code-2-1-316-subagent-effort-env-ultrathink-off-and-powershell-hook-fix.md`.
+
 ## Evidence
 
 All items are changelog lines in the two release notes; none was reproduced here. The number of distinct bypasses closed in one release is the finding: the deny list and hooks are prefix matching and process exit codes, and both had holes that only a release note disclosed.
 
 ## Open questions
 
-- Which release introduced each gap is not stated, so it is unknown how long PowerShell hooks were failing open.
+- Which release introduced each gap is not stated, so it is unknown how long PowerShell hooks were failing open. 2.1.316 shows the exit-code-2 fix in 2.1.309 was incomplete for some command shapes.
 - Whether hooks declared for Bash and run through Git Bash on Windows had the same exit-code problem.
 - `docs/security.md` in this repo records the Windows PowerShell rules; whether its deny block needs a change after 2.1.309 is a human check.
