@@ -7,14 +7,15 @@ sources:
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.300
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.301
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.307
+  - https://github.com/anthropics/claude-code/releases/tag/v2.1.317
 tags: [claude-code, observability, unattended, evals]
 applies_to: [claude-code@2.1.x]
 added: 2026-10-16
-last_verified: 2026-10-23
+last_verified: 2026-11-03
 verified_by: agent
 ---
 
-Three Claude Code releases added OpenTelemetry fields that make unattended and auto-mode runs auditable after the fact: which permission decisions came from the auto-mode classifier versus a rule, which built-in rule a block matched, how many cache-write tokens went to the 5-minute versus 1-hour cache, GenAI semantic-convention attributes on trace spans, and since 2.1.307 one `claude_code.safety_event` per tool call that a permission rule, auto mode, a safety check, a hook or the sandbox stopped, prompted or sent back.
+Four Claude Code releases added OpenTelemetry fields that make unattended and auto-mode runs auditable after the fact: which permission decisions came from the auto-mode classifier versus a rule, which built-in rule a block matched, how many cache-write tokens went to the 5-minute versus 1-hour cache, GenAI semantic-convention attributes on trace spans, and since 2.1.307 one `claude_code.safety_event` per tool call that a permission rule, auto mode, a safety check, a hook or the sandbox stopped, prompted or sent back, and since 2.1.317 `anthropic.plan`, `anthropic.seat_type`, `anthropic.provider` and `anthropic.custom_base_url` on every metric, event and span.
 
 ## When to use
 
@@ -39,9 +40,14 @@ v2.1.307:
 
 - New event `claude_code.safety_event`, emitted for each tool call that a permission rule, auto mode, a safety check, a hook or the sandbox stopped, prompted or sent back. This is the single stream to read after an unattended run to see every intervention, including refusals a mod made with `decider: "person"` (see [unattended runs no longer stall](claude-code-unattended-runs-no-longer-stall-on-prompts-nobody-can-answer.md)).
 
+v2.1.317:
+
+- Metrics, events and spans gain `anthropic.plan`, `anthropic.seat_type`, `anthropic.provider` and `anthropic.custom_base_url`, so one export can be split by plan, seat type and by whether a gateway or custom base URL was in the path.
+- Exports to an `https://` endpoint through a proxy were never sent when they started while another export was in progress; exports behind a proxy that never answers now time out after 10 seconds, or `OTEL_EXPORTER_OTLP_TIMEOUT` up to 30 seconds. Both fixed in 2.1.317, see [the 2.1.317 note](claude-code-2-1-317-email-exfil-check-sdk-hook-onfailure-block-and-headless-exit-1-on-lost-writes.md).
+
 ## Evidence
 
-All three release notes list the fields or event by name. The behaviour was not observed directly in this run; the tier is T1 because the changelog is the first-party source.
+All four release notes list the fields or event by name. The behaviour was not observed directly in this run; the tier is T1 because the changelog is the first-party source.
 
 ## Open questions
 
