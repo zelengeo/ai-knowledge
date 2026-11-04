@@ -5,10 +5,11 @@ status: inbox
 evidence: T1
 sources:
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.316
+  - https://github.com/anthropics/claude-code/releases/tag/v2.1.317
 tags: [claude-code, subagents, hooks, unattended, windows, auto-mode, cost]
 applies_to: [claude-code@2.1.x]
 added: 2026-11-01
-last_verified: 2026-11-01
+last_verified: 2026-11-03
 verified_by: agent
 ---
 
@@ -49,6 +50,8 @@ Changed in 2.1.316:
 - Server-managed settings for Team and Enterprise logins apply without an approval prompt; a stored copy that does not verify is refused.
 - Fast mode on Opus 4.8 deprecated 2026-10-30, removed 2026-11-30. After removal, fast mode requests on Opus 4.8 return an error and do not fall back to standard Opus 4.8.
 
+Follow-up in 2.1.317 (released 2026-11-03): subagents and teammates on a different model from the main conversation use that model's saved effort level or its default instead of the session's effort level. The changelog does not say how this orders against `CLAUDE_CODE_SUBAGENT_EFFORT`; see [the 2.1.317 note](claude-code-2-1-317-email-exfil-check-sdk-hook-onfailure-block-and-headless-exit-1-on-lost-writes.md).
+
 ## Evidence
 
 All items are changelog lines in the release notes; none was reproduced here. The subagent effort default and the second PowerShell hook fix are the two lines that change behaviour this repo already documents (per-role effort in the pstack notes, PowerShell hooks in `docs/security.md` and the 2.1.309 note). The auto-mode change matters because this repo's daily job runs as a scheduled task.
@@ -56,5 +59,6 @@ All items are changelog lines in the release notes; none was reproduced here. Th
 ## Open questions
 
 - Whether `CLAUDE_CODE_SUBAGENT_EFFORT` accepts the same values as the session effort setting (`low` to `max`) is not stated in the changelog.
+- Since 2.1.317, whether `CLAUDE_CODE_SUBAGENT_EFFORT` or the other model's saved effort wins for a subagent on a different model.
 - Whether `CLAUDE_CODE_DISABLE_ULTRATHINK` also disables the VS Code rainbow trigger or only the terminal keyword.
 - Whether the PowerShell hook in this repo's `.claude/settings.json`, if any, begins with a construct the fixed case covers is a human check.

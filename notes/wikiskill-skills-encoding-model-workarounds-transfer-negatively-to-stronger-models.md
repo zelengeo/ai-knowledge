@@ -41,3 +41,4 @@ Primary source read through the arXiv HTML version. Benchmarks are agentic task 
 
 - No coding benchmark in the paper. Whether hand-written engineering skills show the same effect is unmeasured; the agent-skills eval README's adherence gaps are the closest observation in this KB.
 - The paper's "skills" are evolved prompt fragments injected at inference, not SKILL.md files loaded on demand.
+- The opposite direction is also unmeasured: [the AIP note](aip-compiling-prose-skills-to-typed-script-graphs-raises-sonnet-reward-on-skillsbench.md) shows a prose skill compiled into a script graph lifting Sonnet 4.6, and its authors hypothesise weaker models gain more. Whether that graph costs a stronger model, as the workarounds here did, has not been tested.
