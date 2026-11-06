@@ -9,8 +9,14 @@ sources:
 tags: [pocock-skills, productivity, learning]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-06
 verified_by: agent
+validation:
+  verdict: verified
+  checked: 2026-11-06
+  method: primary-source
+  evidence_after: T1
+  notes: Link-check of both sources passed. SKILL.md on main varies the position of the correct quiz answer (issue 611) and resolves workspace paths from the directory /teach was run in (issue 377), both fixes for the Evidence items; the claim holds.
 ---
 
 `/teach` turns the current directory into a stateful teaching workspace: `MISSION.md`, `RESOURCES.md` (vetted sources, parametric knowledge treated as untrusted), numbered `lessons/*.html`, `reference/*.html` cheat-sheets, `learning-records/*.md`, reusable `assets/` components. Each lesson is one sitting, cites sources, and names one primary source to read yourself.

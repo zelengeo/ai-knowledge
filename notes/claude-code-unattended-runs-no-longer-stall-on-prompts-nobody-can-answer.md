@@ -8,10 +8,11 @@ sources:
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.305
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.309
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.307
+  - https://github.com/anthropics/claude-code/releases/tag/v2.1.319
 tags: [claude-code, unattended, auto-mode, scheduling, headless, mods]
 applies_to: [claude-code@2.1.x]
 added: 2026-10-23
-last_verified: 2026-10-23
+last_verified: 2026-11-06
 verified_by: agent
 ---
 
@@ -36,6 +37,7 @@ Between 2.1.304 and 2.1.309 Claude Code changed what happens when nobody is ther
 - 2.1.304: `/auto-mode-setup` added. `decider: "person"` and `e.isReadOnly` added to a mod's `tool.check`. A plugin could keep a headless run going past `--max-turns`, Stop or ended input by spawning subagents or re-running a finished one; fixed. Scheduled Cowork cloud sessions waited five minutes for each subagent whose WebFetch needed a URL approval nobody could give; fixed, with more cases fixed in 2.1.305. Self-paced `/loop` wakeups scheduled at the one-hour maximum fired just after the one-hour prompt cache expired and re-read the conversation uncached; fixed.
 - 2.1.307: an unparseable tool call is retried up to twice before the turn ends with an error. Fork subagents launched together are told which launch is their own, so they are less likely to start each other's work.
 - 2.1.309: the dangerous `rm` and `rmdir` prompt in bypass-permissions mode in the desktop app and VS Code now denies the command at once with a rewrite hint, so unattended sessions keep going. `claude ultrareview` requires workspace trust; scripts pass `--trust-workspace`. On the self-hosted runner, `--startup-timeout-min` no longer stops a session whose first prompt is still working in a subagent; a frozen process is still stopped.
+- Follow-up, 2.1.319 (released 2026-11-06): `permissions.denyInsteadOfPrompting` denies any tool call that would wait on a permission prompt and lets the turn continue, in terminal sessions, subagents and teammates; this is the general setting for the posture the items above approximate case by case. In the same release, auto mode with telemetry or feature flags off no longer falls back to the built-in classifier, and `claude -p` exits 1 when actions were refused for lack of a safety check. Details in [the 2.1.318 and 2.1.319 note](claude-code-2-1-318-and-2-1-319-deny-instead-of-prompting-auto-mode-fails-closed-without-the-server-check-and-bash-permission-bypass-fixes.md).
 
 ## Evidence
 

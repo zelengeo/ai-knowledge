@@ -9,8 +9,14 @@ sources:
 tags: [pocock-skills, engineering, git, merge-conflicts]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-06
 verified_by: agent
+validation:
+  verdict: verified
+  checked: 2026-11-06
+  method: link-check
+  evidence_after: T1
+  notes: Both sources live; the GitHub source is pinned to the v1.2.3 tag. The v1.3.2 release notes list no change to this skill.
 ---
 
 `resolving-merge-conflicts` is a five-step loop for an in-progress merge or rebase: see the state, find each side's primary source (commit, PR, issue), resolve each hunk preserving both intents, run the project's automated checks, finish the operation. It never runs `--abort`. The skill shipped in 1.2.3 and was removed in 1.3.0; the aihero page is marked archived.
