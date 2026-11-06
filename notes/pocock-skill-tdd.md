@@ -9,8 +9,14 @@ sources:
 tags: [pocock-skills, engineering, testing, tdd]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-06
 verified_by: agent
+validation:
+  verdict: verified
+  checked: 2026-11-06
+  method: primary-source
+  evidence_after: T1
+  notes: Link-check of both sources passed. SKILL.md on main gives each proposed seam a one-line note on what it catches and misses (v1.3.2, issue 607), which addresses the friction cited under Evidence; the claim holds.
 ---
 
 `tdd` is a reference, not a driver: the rules that make red-green produce tests worth keeping. One failing test at a pre-agreed seam, just enough code to pass, repeat in vertical slices. No test is written at a seam the human has not confirmed. Refactoring was dropped from the loop and belongs to `code-review`.

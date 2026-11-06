@@ -9,8 +9,14 @@ sources:
 tags: [pocock-skills, engineering, research, subagents]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-06
 verified_by: agent
+validation:
+  verdict: verified
+  checked: 2026-11-06
+  method: primary-source
+  evidence_after: T1
+  notes: Link-check of both sources passed. SKILL.md on main now says to start the background agent with a fresh context window (v1.3.2); the claim holds, delta recorded in the 1.3.2 upstream note.
 ---
 
 `research` spins up a background agent that investigates a question against primary sources only (official docs, source, specs, first-party APIs), follows each claim to the source that owns it, and writes one Markdown file where the repo already keeps notes. Your session keeps working. The skill body is 12 lines.

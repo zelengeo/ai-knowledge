@@ -5,10 +5,11 @@ status: inbox
 evidence: T1
 sources:
   - https://github.com/anthropics/claude-code/releases/tag/v2.1.317
+  - https://github.com/anthropics/claude-code/issues/107757
 tags: [claude-code, unattended, hooks, agent-sdk, headless, auto-mode, mcp, subagents, windows, security]
 applies_to: [claude-code@2.1.x]
 added: 2026-11-03
-last_verified: 2026-11-03
+last_verified: 2026-11-06
 verified_by: agent
 ---
 
@@ -71,9 +72,11 @@ Changed in 2.1.317:
 
 All items are changelog lines in the GitHub release, read through `pnpm run read`; none was reproduced here. The tier is T1 because the release page is on the vendor's GitHub organisation. The email check and the SDK `onFailure` option are the two lines that bear on this repo's own threat model (`docs/security.md`, threats 1 and 2): one is a machine check against one exfiltration shape, the other turns a hook crash from fail-open into fail-closed. The `claude -p` exit-code change bears on the watchdog pattern in [unattended retry watchdog](claude-code-unattended-retry-watchdog-usage-limit.md), which lists how an ended request surfaces in headless output as an open question.
 
+Follow-up (2026-11-06): the email check is the built-in mod `cc-plugin-privacy`, per a maintainer on issue #107757. It is enabled by default, can be turned off in `/plugins`, and refuses without a prompt a shell call that holds the account address and names a User-Agent; it does not cover WebFetch, WebSearch, MCP tools or an address written into a script and then run, and users report it not firing on a direct test on 2.1.317 through 2.1.319. The cause, the gaps and the pending removal of the address from model context are in [the email note](claude-code-account-email-in-model-context-leaks-into-user-agent-headers-the-2-1-317-privacy-mod-covers-only-shell-calls-that-name-user-agent.md).
+
 ## Open questions
 
-- How the email check behaves in auto mode or `-p` runs where nobody can answer the ask: refused with a reason, as the 2.1.304 to 2.1.309 changes made other person-only asks, or something else. Not stated.
-- Whether the check covers only the literal account email string or also encodings of it.
+- Whether the mod's "refused, with no prompt" and the changelog's "asks before" are the same check; in an unattended run a refusal is the better outcome either way.
+- Whether the check covers only the literal account email string or also encodings of it. The mod's description says it matches the account address in shell inputs; encodings are not mentioned.
 - Precedence between `CLAUDE_CODE_SUBAGENT_EFFORT` (2.1.316) and the new per-model saved effort for off-model subagents.
 - What `onFailure` values exist besides `"block"`, and what the default is for existing callbacks.

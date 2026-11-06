@@ -9,8 +9,14 @@ sources:
 tags: [pocock-skills, engineering, setup, issue-tracker]
 applies_to: [mattpocock-skills@1.2.3]
 added: 2026-10-16
-last_verified: 2026-10-16
+last_verified: 2026-11-06
 verified_by: agent
+validation:
+  verdict: stale
+  checked: 2026-11-06
+  method: version-check
+  evidence_after: T1
+  notes: Links live. SKILL.md on main creates each configured triage label the tracker lacks (gh label create, v1.3.2 change 616), which contradicts Procedure step 4; it also wires a git remote and offers to git mv a legacy CONTEXT.md. Body needs a human edit.
 ---
 
 `/setup-matt-pocock-skills` answers three questions for one repo (where issues live, what the triage labels are called, where domain docs sit) and writes them as `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, `docs/agents/domain.md` plus an `## Agent skills` block in `CLAUDE.md` or `AGENTS.md`. The skills never change; they read these files at run time.
